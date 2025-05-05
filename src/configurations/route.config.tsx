@@ -13,7 +13,7 @@ import ContactPage from "../pages/ContactPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <BrowserRouter basename="/parkarcars-v2">
+    <BrowserRouter>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
