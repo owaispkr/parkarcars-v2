@@ -5,7 +5,7 @@ import tailwindcss from "tailwindcss";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/parkarcars-v2/",
+  base: process.env.VITE_BASE_PATH || "/parkarcars-v2/",
   css: {
     postcss: {
       plugins: [tailwindcss()],
