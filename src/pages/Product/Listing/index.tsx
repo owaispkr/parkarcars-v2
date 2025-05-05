@@ -2,7 +2,6 @@ import React from "react";
 import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
 import { List, Space } from "antd";
 import FilterGroup from "../../../components/FilterGroup";
-import { StyleProvider } from "@ant-design/cssinjs";
 import AntdThemeProvider from "../../../providers/themeProvider/AntdThemeProvider";
 
 const data = Array.from({ length: 230 }).map((_, i) => ({
