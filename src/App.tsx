@@ -1,7 +1,7 @@
 import "./index.css";
 
 function App() {
-  return <></>;
+  return <>This is sparta</>;
 }
 
 export default App;
