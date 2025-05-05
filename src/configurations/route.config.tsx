@@ -1,5 +1,4 @@
 import {
-  BrowserRouter,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
@@ -13,15 +12,13 @@ import ContactPage from "../pages/ContactPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <BrowserRouter>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/listing" element={<Listing />} />
-        <Route path="/details/:id" element={<ProductDetail />} />
-      </Route>
-    </BrowserRouter>
+    <Route path="/" element={<Layout />}>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/listing" element={<Listing />} />
+      <Route path="/details/:id" element={<ProductDetail />} />
+    </Route>
   )
 );
 
