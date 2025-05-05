@@ -24,6 +24,9 @@ const ProductDetail = () => {
     <>
       <div className="bg-gray-100">
         <div className="container mx-auto px-4 py-8">
+          <h2 className="text-3xl font-bold mb-2 py-8">
+            TOYOTA Aqua S Package
+          </h2>
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:w-2/3 px-4 mb-8">
               {/* <CarouselContainer data={data} /> */}
@@ -82,7 +85,7 @@ const ProductDetail = () => {
                   Wishlist
                 </button>
               </div>
-              <h2 className="text-3xl font-bold mb-2">TOYOTA Aqua S Package</h2>
+
               <p className="text-gray-600 mb-4">SKU: WH1000XM4</p>
               <div className="mb-4">
                 <span className="text-2xl font-bold mr-2">$12,000</span>
