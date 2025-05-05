@@ -2,6 +2,7 @@ import "./index.css";
 import FilterGroup from "../../components/FilterGroup";
 import LogoHero from "./LogoHero";
 import DisplayProducts from "./FeaturedProducts";
+import FAQs from "./FAQs";
 
 function App() {
   return (
@@ -72,7 +73,7 @@ function App() {
               </ul>
               <a
                 href="/listing"
-                className="inline-block border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3 rounded-full transition duration-300"
+                className="inline-block border-2 border-blue-800 text-gray-800 hover:bg-blue-800 hover:text-white px-8 py-3 rounded-full transition duration-300"
               >
                 View our inventory
               </a>
@@ -137,122 +138,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-16 ">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-              Compare Our Popular Tours
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find the perfect Australian experience for your travel style and
-              budget.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-blue-900 text-white">
-                  <th className="p-4 text-left">Tour Package</th>
-                  <th className="p-4 text-center">Duration</th>
-                  <th className="p-4 text-center">Destinations</th>
-                  <th className="p-4 text-center">Activities</th>
-                  <th className="p-4 text-center">Price</th>
-                  <th className="p-4 text-center"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="p-4">
-                    <div className="font-bold text-lg">Coastal Explorer</div>
-                    <div className="text-gray-600">
-                      Sydney, Gold Coast, Brisbane
-                    </div>
-                  </td>
-                  <td className="p-4 text-center">7 Days</td>
-                  <td className="p-4 text-center">3 Cities</td>
-                  <td className="p-4 text-center">
-                    Beach, City Tours, Wildlife
-                  </td>
-                  <td className="p-4 text-center font-bold">$1,299</td>
-                  <td className="p-4 text-center">
-                    <a
-                      href="#"
-                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-full text-sm font-medium"
-                    >
-                      View Details
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="p-4">
-                    <div className="font-bold text-lg">Outback Adventure</div>
-                    <div className="text-gray-600">
-                      Alice Springs, Uluru, Katherine
-                    </div>
-                  </td>
-                  <td className="p-4 text-center">10 Days</td>
-                  <td className="p-4 text-center">5 Locations</td>
-                  <td className="p-4 text-center">
-                    Hiking, Cultural, Star Gazing
-                  </td>
-                  <td className="p-4 text-center font-bold">$2,199</td>
-                  <td className="p-4 text-center">
-                    <a
-                      href="#"
-                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-full text-sm font-medium"
-                    >
-                      View Details
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="p-4">
-                    <div className="font-bold text-lg">Reef & Rainforest</div>
-                    <div className="text-gray-600">
-                      Cairns, Port Douglas, Daintree
-                    </div>
-                  </td>
-                  <td className="p-4 text-center">8 Days</td>
-                  <td className="p-4 text-center">4 Locations</td>
-                  <td className="p-4 text-center">
-                    Snorkeling, Hiking, Boat Tours
-                  </td>
-                  <td className="p-4 text-center font-bold">$1,799</td>
-                  <td className="p-4 text-center">
-                    <a
-                      href="#"
-                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-full text-sm font-medium"
-                    >
-                      View Details
-                    </a>
-                  </td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4">
-                    <div className="font-bold text-lg">Complete Australia</div>
-                    <div className="text-gray-600">
-                      Sydney, Melbourne, Uluru, Cairns
-                    </div>
-                  </td>
-                  <td className="p-4 text-center">14 Days</td>
-                  <td className="p-4 text-center">7+ Locations</td>
-                  <td className="p-4 text-center">All-inclusive Experience</td>
-                  <td className="p-4 text-center font-bold">$3,499</td>
-                  <td className="p-4 text-center">
-                    <a
-                      href="#"
-                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-full text-sm font-medium"
-                    >
-                      View Details
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <FAQs />
     </>
   );
 }

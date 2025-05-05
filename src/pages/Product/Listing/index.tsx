@@ -1,18 +1,18 @@
-import React from 'react';
-import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { List, Space } from 'antd';
-import FilterGroup from '../../../components/FilterGroup';
-import { StyleProvider } from '@ant-design/cssinjs';
-import AntdThemeProvider from '../../../providers/themeProvider/AntdThemeProvider';
+import React from "react";
+import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
+import { List, Space } from "antd";
+import FilterGroup from "../../../components/FilterGroup";
+import { StyleProvider } from "@ant-design/cssinjs";
+import AntdThemeProvider from "../../../providers/themeProvider/AntdThemeProvider";
 
 const data = Array.from({ length: 230 }).map((_, i) => ({
-  href: 'https://ant.design',
+  href: "https://ant.design",
   title: `ant design part ${i + 1}`,
   avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${i}`,
   description:
-    'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+    "Ant Design, a design language for background applications, is refined by Ant UED Team.",
   content:
-    'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+    "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
 }));
 
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
@@ -24,6 +24,9 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 
 const ListView: React.FC = () => (
   <>
+    <header className="bg-blue-900 text-white text-center py-12">
+      <h1 className="text-4xl font-bold m-8">Inventory</h1>
+    </header>
     <div className="pt-16 bg-blue-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">

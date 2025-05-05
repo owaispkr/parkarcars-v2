@@ -107,7 +107,7 @@ const FilterGroup = () => {
         <div className="bg-white pt-0 p-8 rounded-lg  text-end">
           <a
             href="/listing"
-            className="inline-block border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3 rounded-full transition duration-300"
+            className="inline-block border-2 border-blue-800 text-gray-800 hover:bg-blue-800 hover:text-white px-8 py-3 rounded-full transition duration-300"
           >
             Search
           </a>

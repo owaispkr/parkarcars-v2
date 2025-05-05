@@ -1,69 +1,48 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import Gallery from "./Gallery";
 import MilageSVG from "../../../components/SVG/Milage";
 import BodyTypeSVG from "../../../components/SVG/BodyType";
 import FuelTypeSVG from "../../../components/SVG/FuelType";
 import TransmissionSVG from "../../../components/SVG/Transmission";
 import SeatSVG from "../../../components/SVG/Seat";
-import { Calendar } from "antd";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import CalendarSVG from "../../../components/SVG/Calendar";
+import "react-photo-view/dist/react-photo-view.css";
 
 const data = [
-  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-  "https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-  "https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-  "https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667384.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667403.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667428.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667444.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667458.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667297.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667314.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667324.jpg",
+  "https://trademe.tmcdn.co.nz/photoserver/plus/2208667349.jpg",
 ];
 
 const ProductDetail = () => {
-  const params = useParams();
-  const [coverImage, setCoverImage] = useState<string>(data[0]);
-  const [openModal, setOpenModal] = useState<boolean>(false);
-
-  const ChangeImage = (url: string) => {
-    setCoverImage(url);
-  };
-
   return (
     <>
       <div className="bg-gray-100">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:w-2/3 px-4 mb-8">
-              <img
-                src={coverImage}
-                alt="Product"
-                className="w-full h-auto rounded-lg shadow-md mb-4"
-                id="mainImage"
-                onClick={() => setOpenModal(!openModal)}
-              />
-              <div className="flex gap-4 py-4 justify-center overflow-x-auto">
-                <img
-                  src={data[0]}
-                  alt="Thumbnail 1"
-                  className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                  onClick={() => ChangeImage(data[0])}
-                />
-                <img
-                  src={data[1]}
-                  alt="Thumbnail 2"
-                  className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                  onClick={() => ChangeImage(data[1])}
-                />
-                <img
-                  src={data[2]}
-                  alt="Thumbnail 3"
-                  className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                  onClick={() => ChangeImage(data[2])}
-                />
-                <img
-                  src={data[3]}
-                  alt="Thumbnail 4"
-                  className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                  onClick={() => ChangeImage(data[3])}
-                />
-              </div>
+              {/* <CarouselContainer data={data} /> */}
+              <PhotoProvider
+                speed={() => 800}
+                easing={(type) =>
+                  type === 2
+                    ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+                    : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+                }
+              >
+                <div className="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8">
+                  {data.map((item, index) => (
+                    <PhotoView key={index} src={item}>
+                      <img src={item} alt="" />
+                    </PhotoView>
+                  ))}
+                </div>
+              </PhotoProvider>
             </div>
 
             <div className="w-full md:w-1/3 px-4">
@@ -200,19 +179,6 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        id="galleryModal"
-        data-dialog-backdrop="modal"
-        data-dialog-backdrop-close="true"
-        className={`${
-          openModal ? "block" : "hidden"
-        } overflow-y-auto overflow-x-${
-          openModal ? "block" : "hidden"
-        } fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full `}
-      >
-        <Gallery openModalObj={[setOpenModal]} />
       </div>
     </>
   );

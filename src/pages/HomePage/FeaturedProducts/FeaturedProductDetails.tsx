@@ -4,7 +4,7 @@ const FeaturedProductDetails: FC = () => {
   return (
     <>
       {" "}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+      <div className="grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-0">
         <div className="bg-white pt-2 rounded-lg text-start">
           <p className="text-gray-600 text-sm font-semibold leading-relaxed">
             Milage
