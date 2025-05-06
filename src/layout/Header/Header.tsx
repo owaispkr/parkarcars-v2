@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LoginSVG from "../../components/SVG/Login";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -13,20 +14,7 @@ const Header = () => {
             href="#"
             className="flex items-center text-primary hover:text-secondary"
           >
-            <svg
-              className="h-8 w-8 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707.707m12.728 0l.707.707M6.343 17.657l.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            <span className="text-2xl font-bold">MyBrand</span>
+            <span className="text-2xl font-bold">Parkar Cars</span>
           </a>
 
           {/* <!-- Mobile Menu Button (Hidden on larger screens) --> */}
@@ -96,10 +84,11 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href="/listing"
-                  className="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-md transition-colors duration-300"
+                  href="/login"
+                  className="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold text-md px-2 py-0 rounded-full transition"
                 >
-                  Get Started
+                  <LoginSVG />
+                  Login
                 </a>
               </li>
             </ul>
@@ -107,50 +96,58 @@ const Header = () => {
         </div>
 
         {/* <!-- Mobile Menu (Hidden by default) --> */}
-        <nav
+        <div
           id="mobile-menu"
           className={
             isNavOpen
-              ? "block md:hidden bg-gray-50 border-t border-gray-200 top-16 fixed transition-height duration-300 ease-in-out w-full"
+              ? "block md:hidden h-full bg-gray-50 border-t border-gray-200 top-16 fixed transition-height duration-300 ease-in-out w-full"
               : "hidden"
           }
         >
-          <ul className="px-4 py-2">
-            <li>
-              <a href="/" className="block py-2 hover:text-primary">
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/listing"
-                id="services-dropdown-toggle"
-                className="block py-2 hover:text-primary"
-              >
-                Inventory
-              </a>
-            </li>
-            <li>
-              <a href="/about" className="block py-2 hover:text-primary">
-                About
-              </a>
-            </li>
+          <div className="flex justify-between items-center mx-4 mt-4">
+            <h2 className="text-2xl font-extrabold text-gray-900">Menu</h2>
+          </div>
+          <div>
+            <ul className="px-4 py-4 w-full divide-y divide-gray-200">
+              <li>
+                <a href="/" className="block py-4 hover:text-primary">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/listing"
+                  id="services-dropdown-toggle"
+                  className="block py-4 hover:text-primary"
+                >
+                  Inventory
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="block py-4 hover:text-primary">
+                  About
+                </a>
+              </li>
 
-            <li>
-              <a href="/contact" className="block py-2 hover:text-primary">
-                Contact
-              </a>
-            </li>
-            <li>
+              <li>
+                <a href="/contact" className="block py-4 hover:text-primary">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bottom-0 fixed px-4 py-2 w-full">
+            <div className="bg-blue-800 pt-0 rounded-lg text-center w-full">
               <a
-                href="#"
-                className="block py-2 bg-primary hover:bg-secondary text-white rounded-md text-center transition-colors duration-300"
+                href="/login"
+                className="inline-block border-2 border-blue-800 text-gray-800 hover:bg-blue-800 text-white px-8 py-3 rounded-full transition duration-300 w-full"
               >
-                Get Started
+                Log in
               </a>
-            </li>
-          </ul>
-        </nav>
+            </div>
+          </div>
+        </div>
       </header>
     </>
   );

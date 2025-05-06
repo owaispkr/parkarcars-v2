@@ -13,6 +13,7 @@ const AntdThemeProvider: FC<any> = ({ children }) => {
           Select: {
             controlOutline: "#3b82f6",
             controlOutlineWidth: 1,
+            optionSelectedBg: "#e5e7eb",
           },
         },
 

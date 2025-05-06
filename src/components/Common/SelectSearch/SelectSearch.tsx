@@ -13,7 +13,7 @@ type Props = {
   id?: string;
 };
 
-const SelectDropdown: FC<Props> = ({
+const SelectSearch: FC<Props> = ({
   options,
   defaultValue,
   value,
@@ -26,6 +26,10 @@ const SelectDropdown: FC<Props> = ({
     <AntdThemeProvider>
       <Select
         id={id}
+        showSearch
+        filterOption={(input, option) =>
+          (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
+        }
         size="large"
         className={className}
         style={{ width: width }}
@@ -38,4 +42,4 @@ const SelectDropdown: FC<Props> = ({
   );
 };
 
-export default SelectDropdown;
+export default SelectSearch;
