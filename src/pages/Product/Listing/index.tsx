@@ -61,9 +61,7 @@ const ListView: React.FC = () => {
               itemLayout="vertical"
               size="large"
               pagination={{
-                onChange: (page) => {
-                  console.log(page);
-                },
+                onChange: (page) => {},
                 pageSize: 10,
               }}
               dataSource={data}

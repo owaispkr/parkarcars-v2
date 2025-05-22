@@ -13,6 +13,9 @@ import AuthenticationLayout from "../layout/AuthenticationLayout";
 import BlankLayout from "../layout/BlankLayout";
 import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
+import Dashboard from "../pages/Admin/Dashboard";
+import ProtectedRoute from "../layout/ProtectedRoute";
+import CarPage from "../pages/Admin/Car/CarPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +30,22 @@ const router = createBrowserRouter(
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/listing" element={<Listing />} />
         <Route path="/details/:id" element={<ProductDetail />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/car-form"
+          element={
+            <ProtectedRoute>
+              <CarPage />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Route>
   )

@@ -61,8 +61,6 @@ const FilterGroup = () => {
     setFilter(_filters);
   };
 
-  console.log(filter);
-
   return (
     <AntdThemeProvider>
       <div className="grid grid-cols-1 bg-white gap-8">

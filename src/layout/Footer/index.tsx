@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <section className="py-16 bg-blue-900 text-white relative overflow-hidden">
+    <footer className="sticky top-[100vh] py-16 bg-blue-900 text-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -20,7 +20,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 export default Footer;

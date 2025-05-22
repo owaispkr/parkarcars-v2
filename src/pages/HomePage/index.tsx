@@ -3,8 +3,14 @@ import FilterGroup from "../../components/FilterGroup";
 import LogoHero from "./LogoHero";
 import DisplayProducts from "./FeaturedProducts";
 import FAQs from "./FAQs";
+import useQueryCars from "../../hooks/useQueryCars";
 
-function App() {
+const HomePage = () => {
+  const { cars, error, isLoading } = useQueryCars();
+  console.log(cars);
+  console.log(error);
+  console.log(isLoading);
+
   return (
     <>
       <section className="py-16 md:py-24">
@@ -30,9 +36,9 @@ function App() {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </div>
@@ -141,6 +147,6 @@ function App() {
       <FAQs />
     </>
   );
-}
+};
 
-export default App;
+export default HomePage;

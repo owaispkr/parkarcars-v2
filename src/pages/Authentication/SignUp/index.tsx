@@ -1,4 +1,35 @@
+import { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 const SignUp = () => {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const { signUpNewUser } = useAuth();
+
+  const handleSignUp = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const result = await signUpNewUser(name, email, password); // Call context function
+      if (result.success) {
+        navigate("/dashboard"); // Navigate to dashboard on success
+      } else {
+        setError(result.error.message); // Show error message on failure
+      }
+    } catch (err) {
+      setError("An unexpected error occurred."); // Catch unexpected errors
+    } finally {
+      setLoading(false); // End loading state
+    }
+  };
+
   return (
     <>
       <div className="bg-gray-100 h-screen flex items-center justify-center">
@@ -20,11 +51,11 @@ const SignUp = () => {
                     id="Capa_1"
                     viewBox="0 0 497.417 497.417"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       <g>
@@ -40,7 +71,6 @@ const SignUp = () => {
                     className="pl-2 outline-none border-none w-full"
                     type="name"
                     name="name"
-                    value=""
                     placeholder="Full name"
                     required
                   />
@@ -54,9 +84,9 @@ const SignUp = () => {
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
                     />
                   </svg>
@@ -64,7 +94,7 @@ const SignUp = () => {
                     className="pl-2 outline-none border-none w-full"
                     type="email"
                     name="email"
-                    value=""
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
                     required
                   />
@@ -77,16 +107,17 @@ const SignUp = () => {
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                   <input
                     className="pl-2 outline-none border-none w-full"
                     type="password"
                     name="password"
-                    id=""
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                     required
                   />
@@ -99,9 +130,9 @@ const SignUp = () => {
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                   <input
@@ -116,10 +147,10 @@ const SignUp = () => {
               </div>
 
               <button
-                type="submit"
-                value="login"
+                type="button"
                 id="login"
                 className="mt-6 w-full shadow-xl bg-gradient-to-tr from-blue-900 to-blue-400 hover:to-blue-700 text-blue-100 py-2 rounded-md text-lg tracking-wide transition duration-1000"
+                onClick={handleSignUp}
               >
                 Register
               </button>
