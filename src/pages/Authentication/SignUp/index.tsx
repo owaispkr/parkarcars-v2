@@ -30,6 +30,8 @@ const SignUp = () => {
     }
   };
 
+  console.log(error);
+  console.log(loading);
   return (
     <>
       <div className="bg-gray-100 h-screen flex items-center justify-center">
@@ -72,6 +74,7 @@ const SignUp = () => {
                     type="name"
                     name="name"
                     placeholder="Full name"
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>

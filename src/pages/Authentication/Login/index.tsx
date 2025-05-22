@@ -1,6 +1,6 @@
 import AntdThemeProvider from "../../../providers/themeProvider/AntdThemeProvider";
 import type { FormProps } from "antd";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
@@ -27,6 +27,9 @@ const Login = () => {
   ) => {
     console.log("Failed:", errorInfo);
   };
+
+  console.log(error);
+  console.log(loading);
 
   const handleLogin = async (formData: FieldType) => {
     if (formData.email && formData.password) {

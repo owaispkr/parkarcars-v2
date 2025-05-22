@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { supabase } from "../providers/supabase/supabaseClient";
-import { Session, User } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 
 interface AuthContextType {
   signUpNewUser: (
@@ -24,11 +24,6 @@ interface AuthContextType {
 
 interface AuthContextProviderProps {
   children: ReactNode;
-}
-
-interface data {
-  user: User | null;
-  session: Session | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
