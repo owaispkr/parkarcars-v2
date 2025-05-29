@@ -1,10 +1,11 @@
 import { FC, useRef, useState } from "react";
 import Dragger from "antd/es/upload/Dragger";
-import { notification, UploadFile, UploadProps } from "antd";
+import { UploadFile, UploadProps } from "antd";
 import { supabase } from "../../../../providers/supabase/supabaseClient";
 import { Cars } from "../../../../types/api/forms/Cars";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 type Props = { newCar: Cars };
 
@@ -53,28 +54,19 @@ const UploadGallery: FC<Props> = ({ newCar }) => {
     if (allDone) {
       setTimeout(async () => {
         console.info("✅ All uploads complete!");
-        console.log(uploadedUrlsRef.current);
         const { error } = await supabase
           .from("Cars")
           .update({ gallery: uploadedUrlsRef.current }) // assumes gallery is text[]
-          .eq("id", newCar.id);
+          .eq("id", newCar.id ?? 0);
 
         if (error) {
-          console.error("Failed to update car gallery");
+          toast.error("Failed to update car gallery");
         } else {
           console.info("Car gallery updated!");
-          notification.open({
-            message: "Car successfully uploaded",
-            description:
-              "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
-            onClick: () => {
-              console.log("Notification Clicked!");
-            },
-          });
-
+          toast.success("It is done!!");
           navigate("/dashboard");
         }
-      }, 2000);
+      }, 500);
     }
   };
 

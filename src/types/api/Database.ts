@@ -40,6 +40,7 @@ export type Database = {
           color: string | null;
           coverImage: string | null;
           created_at: string;
+          drive: string | null;
           engine: string | null;
           features: string | null;
           fuelType: string | null;
@@ -50,6 +51,8 @@ export type Database = {
           odometer: string | null;
           package: string | null;
           price: number | null;
+          seats: number | null;
+          steering: string | null;
           stockNumber: string | null;
           transmission: string | null;
           year: number | null;
@@ -59,6 +62,7 @@ export type Database = {
           color?: string | null;
           coverImage?: string | null;
           created_at?: string;
+          drive?: string | null;
           engine?: string | null;
           features?: string | null;
           fuelType?: string | null;
@@ -69,6 +73,8 @@ export type Database = {
           odometer?: string | null;
           package?: string | null;
           price?: number | null;
+          seats?: number | null;
+          steering?: string | null;
           stockNumber?: string | null;
           transmission?: string | null;
           year?: number | null;
@@ -78,6 +84,7 @@ export type Database = {
           color?: string | null;
           coverImage?: string | null;
           created_at?: string;
+          drive?: string | null;
           engine?: string | null;
           features?: string | null;
           fuelType?: string | null;
@@ -88,9 +95,29 @@ export type Database = {
           odometer?: string | null;
           package?: string | null;
           price?: number | null;
+          seats?: number | null;
+          steering?: string | null;
           stockNumber?: string | null;
           transmission?: string | null;
           year?: number | null;
+        };
+        Relationships: [];
+      };
+      UserRole: {
+        Row: {
+          created_at: string;
+          id: number;
+          role: string | null;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          role?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          role?: string | null;
         };
         Relationships: [];
       };

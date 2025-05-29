@@ -11,13 +11,14 @@ import { Cars } from "../../../../types/api/forms/Cars";
 import CarList from "../../../../Data/Cars/CarList";
 import { FC, useState } from "react";
 import { supabase } from "../../../../providers/supabase/supabaseClient";
+import { toast } from "react-toastify";
 
 type Props = {
   ref: any;
   postCarInformationSuccess: (_insertedCar: any[] | any) => void;
 };
 
-const initialValues = {
+const initialValues: Cars = {
   maker: "Toyota",
   model: "Camry",
   package: "L Package",
@@ -25,11 +26,14 @@ const initialValues = {
   fuelType: "Hybrid",
   transmission: "Automatic",
   engine: "2400",
-  price: "150000",
+  price: 150000,
   odometer: "27000",
-  year: "2019",
+  year: 2019,
   color: "Red",
   stockNumber: "22515asd5151",
+  seats: 5,
+  drive: "AWD",
+  steering: "LHS",
 };
 
 const UploadCarInformation: FC<Props> = ({
@@ -42,8 +46,6 @@ const UploadCarInformation: FC<Props> = ({
   const onFinish: FormProps<Cars>["onFinish"] = async (values) => {
     console.log("Success:", values);
 
-    console.log(values);
-
     const { data, error } = await supabase
       .from("Cars")
       .insert([values])
@@ -54,7 +56,7 @@ const UploadCarInformation: FC<Props> = ({
     }
 
     setTimeout(() => {
-      console.log(data);
+      toast.info("Car information uploaded!");
       postCarInformationSuccess(data);
     }, 1000);
   };
@@ -315,6 +317,61 @@ const UploadCarInformation: FC<Props> = ({
                     ]}
                   >
                     <Input size="large" placeholder="Stock Number" />
+                  </Form.Item>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="w-full p-2 rounded-lg  text-start">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    Drive
+                  </h3>
+                  <Form.Item<Cars>
+                    name="drive"
+                    style={{ width: "100%" }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select drive",
+                      },
+                    ]}
+                  >
+                    <Input size="large" placeholder="Drive" />
+                  </Form.Item>
+                </div>
+                <div className="w-full p-2 rounded-lg  text-start">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    Seats
+                  </h3>
+                  <Form.Item<Cars>
+                    name="seats"
+                    style={{ width: "100%" }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select seats",
+                      },
+                    ]}
+                  >
+                    <Input size="large" placeholder="Seats" type="number" />
+                  </Form.Item>
+                </div>
+
+                <div className="w-full p-2 rounded-lg  text-start">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    Steering
+                  </h3>
+                  <Form.Item<Cars>
+                    name="steering"
+                    style={{ width: "100%" }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select Steering",
+                      },
+                    ]}
+                  >
+                    <Input size="large" placeholder="Steering" />
                   </Form.Item>
                 </div>
               </div>

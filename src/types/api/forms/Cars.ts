@@ -1,18 +1,21 @@
 export type Cars = {
   bodyType: string | null;
   color: string | null;
-  coverImage: string | null;
-  created_at: string;
+  coverImage?: string | null;
+  created_at?: string;
+  drive: string | null;
   engine: string | null;
-  features: string | null;
+  features?: string | null;
   fuelType: string | null;
-  gallery: string | null;
-  id: number;
+  gallery?: string | null;
+  id?: number;
   maker: string | null;
   model: string | null;
   odometer: string | null;
   package: string | null;
   price: number | null;
+  seats: number | null;
+  steering: string | null;
   stockNumber: string | null;
   transmission: string | null;
   year: number | null;
