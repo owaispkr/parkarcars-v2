@@ -15,7 +15,7 @@ import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
 import Dashboard from "../pages/Admin/Dashboard";
 import ProtectedRoute from "../layout/ProtectedRoute";
-import CarPage from "../pages/Admin/Car/CarPage";
+import UploadCarPage from "../pages/Admin/Car/UploadCarPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,7 +42,7 @@ const router = createBrowserRouter(
           path="/car-form"
           element={
             <ProtectedRoute>
-              <CarPage />
+              <UploadCarPage />
             </ProtectedRoute>
           }
         />

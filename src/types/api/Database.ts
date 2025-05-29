@@ -50,6 +50,7 @@ export type Database = {
           odometer: string | null;
           package: string | null;
           price: number | null;
+          stockNumber: string | null;
           transmission: string | null;
           year: number | null;
         };
@@ -68,6 +69,7 @@ export type Database = {
           odometer?: string | null;
           package?: string | null;
           price?: number | null;
+          stockNumber?: string | null;
           transmission?: string | null;
           year?: number | null;
         };
@@ -86,6 +88,7 @@ export type Database = {
           odometer?: string | null;
           package?: string | null;
           price?: number | null;
+          stockNumber?: string | null;
           transmission?: string | null;
           year?: number | null;
         };

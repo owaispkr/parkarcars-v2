@@ -42,6 +42,6 @@ export const FuelTypeOptions = FuelType.map((x) => {
   return { label: x, value: x.replace(" ", "-") };
 });
 
-export const TransmissionOptions = FuelType.map((x) => {
+export const TransmissionOptions = Transmission.map((x) => {
   return { label: x, value: x.replace(" ", "-") };
 });
