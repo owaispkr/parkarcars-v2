@@ -46,6 +46,7 @@ export type Database = {
           fuelType: string | null;
           gallery: string | null;
           id: number;
+          identifier: string | null;
           maker: string | null;
           model: string | null;
           odometer: string | null;
@@ -68,6 +69,7 @@ export type Database = {
           fuelType?: string | null;
           gallery?: string | null;
           id?: number;
+          identifier?: string | null;
           maker?: string | null;
           model?: string | null;
           odometer?: string | null;
@@ -90,6 +92,7 @@ export type Database = {
           fuelType?: string | null;
           gallery?: string | null;
           id?: number;
+          identifier?: string | null;
           maker?: string | null;
           model?: string | null;
           odometer?: string | null;

@@ -2,6 +2,7 @@ export type Cars = {
   bodyType: string | null;
   color: string | null;
   coverImage?: string | null;
+  identifier?: string | null;
   created_at?: string;
   drive: string | null;
   engine: string | null;

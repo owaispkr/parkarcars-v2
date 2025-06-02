@@ -34,6 +34,8 @@ const initialValues: Cars = {
   seats: 5,
   drive: "AWD",
   steering: "LHS",
+  features:
+    "Power Mirrors;FM Radio;Navigation System;Back Camera;Power Steering;Air Bags;Power Windows;Keyless Entry;Power Windows;Fog Lights;Cruise Control;Push Start;Lane Assistance;Air Condition;Spoiler;Power Seat",
 };
 
 const UploadCarInformation: FC<Props> = ({
@@ -298,7 +300,7 @@ const UploadCarInformation: FC<Props> = ({
                       },
                     ]}
                   >
-                    <Input size="large" placeholder="Color" />
+                    <Input size="large" type="color" placeholder="Color" />
                   </Form.Item>
                 </div>
 
@@ -381,13 +383,23 @@ const UploadCarInformation: FC<Props> = ({
                   <h3 className="text-xl font-bold text-gray-800 mb-3">
                     Features
                   </h3>
-                  <TextArea
-                    name="textarea"
-                    id="text"
-                    className="h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-gray-300"
+                  <Form.Item<Cars>
+                    name="features"
+                    style={{ width: "100%" }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select features",
+                      },
+                    ]}
                   >
-                    Message
-                  </TextArea>
+                    <TextArea
+                      name="textarea"
+                      id="text"
+                      placeholder="features"
+                      className="h-40 w-full resize-none rounded-md border border-slate-300 p-3"
+                    ></TextArea>
+                  </Form.Item>
                 </div>
               </div>
 

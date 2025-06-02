@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterGroup from "../../../components/FilterGroup";
 import useQueryCars from "../../../hooks/useQueryCars";
 import CarListView from "./CarListView";
+import {
+  CarFilter,
+  initialCarFilterValues,
+} from "../../../types/app/CarFilter";
+import { useNavigate } from "react-router-dom";
 
 const ListView: React.FC = () => {
+  const navigate = useNavigate();
   const { cars } = useQueryCars();
+  const [carFilters, setCarFilters] = useState<CarFilter>(
+    initialCarFilterValues
+  );
+
+  const onFilterGroupSerchClick = () => {
+    // Build query string
+    const query = new URLSearchParams();
+    Object.entries(carFilters).forEach(([key, value]) => {
+      if (value) query.set(key, value);
+    });
+
+    navigate(`/listing?${query.toString()}`);
+  };
 
   return (
     <>
@@ -24,7 +43,11 @@ const ListView: React.FC = () => {
             </p>
           </div>
 
-          <FilterGroup />
+          <FilterGroup
+            onFilterGroupSerchClick={onFilterGroupSerchClick}
+            filter={carFilters}
+            setFilter={setCarFilters}
+          />
         </div>
       </div>
       <div className="bg-blue-50">

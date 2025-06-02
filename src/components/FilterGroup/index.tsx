@@ -3,28 +3,19 @@ import SelectDropdown from "../Common/SelectDropdown/SelectDropdown";
 import AntdThemeProvider from "../../providers/themeProvider/AntdThemeProvider";
 import SelectSearch from "../Common/SelectSearch/SelectSearch";
 import CarList from "../../Data/Cars/CarList";
-import { useState } from "react";
+import { FC } from "react";
 import {
   BodyTypeOptions,
-  EngineOptions,
   FuelTypeOptions,
   makersOptions,
   TransmissionOptions,
 } from "../../Data";
 import { CarFilter } from "../../types/app/CarFilter";
 
-const initialFilterValues: CarFilter = {
-  maker: "All",
-  model: "All",
-  bodyType: "All",
-  fuelType: "All",
-  transmission: "All",
-  engineFrom: "All",
-  engineTo: "All",
-  priceFrom: "",
-  priceTo: "",
-  yearFrom: "",
-  yearTo: "",
+type Props = {
+  onFilterGroupSerchClick: () => void;
+  filter: CarFilter;
+  setFilter: React.Dispatch<React.SetStateAction<CarFilter>>;
 };
 
 const maker = "maker";
@@ -39,9 +30,11 @@ const priceTo = "priceTo";
 const yearFrom = "yearFrom";
 const yearTo = "yearTo";
 
-const FilterGroup = () => {
-  const [filter, setFilter] = useState<CarFilter>(initialFilterValues);
-
+const FilterGroup: FC<Props> = ({
+  onFilterGroupSerchClick,
+  filter,
+  setFilter,
+}) => {
   const modelOptions = CarList.find(
     (x) => x.brand === filter.maker
   )?.models.map((x) => {
@@ -59,6 +52,10 @@ const FilterGroup = () => {
     }
 
     setFilter(_filters);
+  };
+
+  const onSearchClick = () => {
+    onFilterGroupSerchClick();
   };
 
   return (
@@ -133,21 +130,23 @@ const FilterGroup = () => {
             <h3 className="text-xl font-bold text-gray-800 mb-3">Engine</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols- gap-4">
               <div>
-                <SelectDropdown
-                  options={EngineOptions}
-                  value={filter.engineFrom}
-                  handleChange={(_engineFrom) =>
-                    onSelectionChange(engineFrom, _engineFrom)
-                  }
+                <Input
+                  size="large"
+                  onBlur={(event) => {
+                    onSelectionChange(engineFrom, event.target.value);
+                  }}
+                  type="number"
+                  placeholder="Min"
                 />
               </div>
               <div>
-                <SelectDropdown
-                  options={EngineOptions}
-                  value={filter.engineTo}
-                  handleChange={(_engineTo) =>
-                    onSelectionChange(engineTo, _engineTo)
-                  }
+                <Input
+                  size="large"
+                  type="number"
+                  onBlur={(event) => {
+                    onSelectionChange(engineTo, event.target.value);
+                  }}
+                  placeholder="Max"
                 />
               </div>
             </div>
@@ -211,12 +210,13 @@ const FilterGroup = () => {
           {/* //#region Engine Year */}
         </div>
         <div className="bg-white pt-0 p-8 rounded-lg text-end">
-          <a
-            href="/listing"
+          <button
+            type="button"
+            onClick={onSearchClick}
             className="inline-block border-2 border-blue-800 text-gray-800 hover:bg-blue-800 hover:text-white px-8 py-3 rounded-full transition duration-300"
           >
             Search
-          </a>
+          </button>
         </div>
       </div>
     </AntdThemeProvider>

@@ -4,12 +4,30 @@ import LogoHero from "./LogoHero";
 import DisplayProducts from "./FeaturedProducts";
 import FAQs from "./FAQs";
 import useQueryCars from "../../hooks/useQueryCars";
+import { useState } from "react";
+import { CarFilter, initialCarFilterValues } from "../../types/app/CarFilter";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const [carFilters, setCarFilters] = useState<CarFilter>(
+    initialCarFilterValues
+  );
+
   const { cars, error, isLoading } = useQueryCars();
   console.log(cars);
   console.log(error);
   console.log(isLoading);
+
+  const onFilterGroupSerchClick = () => {
+    // Build query string
+    const query = new URLSearchParams();
+    Object.entries(carFilters).forEach(([key, value]) => {
+      if (value) query.set(key, value);
+    });
+
+    navigate(`/listing?${query.toString()}`);
+  };
 
   return (
     <>
@@ -140,7 +158,11 @@ const HomePage = () => {
             </p>
           </div>
 
-          <FilterGroup />
+          <FilterGroup
+            onFilterGroupSerchClick={onFilterGroupSerchClick}
+            filter={carFilters}
+            setFilter={setCarFilters}
+          />
         </div>
       </section>
 
